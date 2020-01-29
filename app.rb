@@ -14,5 +14,6 @@ class Week < ActiveRecord::Base
 end
 
 get '/' do
+  @clients = Client.all
   erb :index
 end

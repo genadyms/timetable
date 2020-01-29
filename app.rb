@@ -15,10 +15,19 @@ end
 
 before do
   @clients = Client.all
+  @c = Client.new
+end
+
+get "/client/:id/edit" do
+  erb "edit"
+end
+
+get "/client/:id/remove" do
+  Client.destroy params[:id]
+  erb :index
 end
 
 get '/' do
-  @c = Client.new
   erb :index
 end
 

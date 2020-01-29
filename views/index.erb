@@ -1,6 +1,8 @@
-<h2> Списск пользователей</h2>
-<% @clients.each do |item| %>
-  <p><%= item.name %></p>
+<h2> Список пользователей</h2>
+<% @clients.each do |client| %>
+  <h4><%= client.name %></h4>
+  <p><a href="/client/<%= client.id %>/edit">Редактировать</a></p>
+  <p><a href="/client/<%= client.id %>/remove">Удалить</a></p>
 <% end %>
 <h5>Добавить пользователя:</h5>
 <form action="/" method="post">

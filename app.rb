@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
@@ -14,5 +12,13 @@ class Week < ActiveRecord::Base
 end
 
 get '/' do
+  @clients = Client.all
   erb :index
+end
+
+post '/' do
+  client = Client.new params[:client]
+  client.save
+
+  erb "Name #{params['name']}, role #{params['role']} "
 end

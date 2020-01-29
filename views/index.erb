@@ -1,0 +1,10 @@
+<h2> Списск пользователей</h2>
+<% @clients.each do |item| %>
+  <p><%= item.name %></p>
+<% end %>
+<h5>Добавить пользователя:</h5>
+<form action="/" method="post">
+  <input type="text" name="client[name]" placeholder="введите имя" />
+  <input type="text" name="client[role]" placeholder="введите роль" />
+  <input type="submit">
+</form>

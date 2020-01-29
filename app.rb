@@ -6,19 +6,26 @@ require 'sinatra/activerecord'
 set :database, 'sqlite3:timetable.db'
 
 class Client < ActiveRecord::Base
+  validates :name, presence: true
+  validates :role, presence: true
 end
 
 class Week < ActiveRecord::Base
 end
 
-get '/' do
+before do
   @clients = Client.all
+end
+
+get '/' do
+  @c = Client.new
   erb :index
 end
 
 post '/' do
-  client = Client.new params[:client]
-  client.save
-
-  erb "Name #{params['name']}, role #{params['role']} "
+  @c = Client.new params[:client]
+  if !@c.save
+    @error = "Error"
+  end
+  erb :index
 end

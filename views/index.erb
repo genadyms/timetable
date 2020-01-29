@@ -4,7 +4,7 @@
 <% end %>
 <h5>Добавить пользователя:</h5>
 <form action="/" method="post">
-  <input type="text" name="client[name]" placeholder="введите имя" />
+  <input type="text" name="client[name]" placeholder="введите имя" value="<%= @c.name %>"/>
   <input type="text" name="client[role]" placeholder="введите роль" />
   <input type="submit">
 </form>
